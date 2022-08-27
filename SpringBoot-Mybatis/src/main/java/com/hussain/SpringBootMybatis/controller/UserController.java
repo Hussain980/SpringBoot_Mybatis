@@ -24,11 +24,11 @@ public class UserController {
 	}
 
 	@PostMapping("/users")
-	public List<Users> createUsers(@RequestBody Users users) {
-		userMapper.create(users);
-		return userMapper.findAll();
+	public Users createUsers(@RequestBody Users users) {
+		int id = userMapper.create(users);
+		return userMapper.findById(id);
 	}
-	
+
 	@GetMapping("/user/{id}")
 	public Users getUserById(@PathVariable("id") Integer id) {
 		return userMapper.findById(id);
