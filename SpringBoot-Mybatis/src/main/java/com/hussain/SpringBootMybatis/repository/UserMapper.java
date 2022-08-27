@@ -19,7 +19,7 @@ public interface UserMapper {
 			@Result(property = "lastName", column = "last_name") })
 	List<Users> findAll();
 
-	@Insert("insert into users (first_name, last_name) values (#{firstName}, #{lastName})")
+	@Select("insert into users (first_name, last_name) values (#{firstName}, #{lastName}) returning id")
 	@Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
 	int create(Users users);
 
